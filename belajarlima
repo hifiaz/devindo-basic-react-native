@@ -1,0 +1,48 @@
+import React, {Component} from 'react';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
+
+export default class App extends React.Component {
+  state ={
+    count: 0
+  }
+  render() {
+    const {count} = this.state;
+    let pic={
+      uri: 'https://source.unsplash.com/daily'
+    }
+    return (
+      <View style={styles.container}>
+        <Text>Open up App.js to start working on your app!</Text>
+        <Image source={pic} style={{height:100, width:190}}/>
+        <Nama name="devindo"></Nama>
+        <Nama name="fiaz"></Nama>
+        <Nama name="luthfi"></Nama>
+        <Button title="+" onPress={() => this.setState({ count: this.state.count + 1})}/>
+        <Text>{this.state.count}</Text>
+        <Button title="-" onPress={() => this.setState({ count: this.state.count - 1})}/>
+        <Text style={styles.warna}>Hallo devindo</Text>
+      </View>
+    );
+  }
+}
+
+class Nama extends Component{
+  render(){
+    return(
+      <Text> Hallo {this.props.name} </Text>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  warna: {
+    color: 'red',
+    fontSize: 30
+  }
+});
