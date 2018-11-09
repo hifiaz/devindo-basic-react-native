@@ -1,0 +1,41 @@
+import React, {Component} from 'react';
+import { StyleSheet, Text, View, Image, Button, TextInput } from 'react-native';
+
+export default class App extends React.Component {
+  state ={
+    text: ''
+  }
+  render() {
+    const {text} = this.state;
+    let pic={
+      uri: 'https://source.unsplash.com/daily'
+    }
+    return (
+      <View style={styles.container}>
+        <TextInput onChangeText={(text) => this.setState({text})} placeholder="tulis disini" style={{height:40, borderColor:'grey', borderWidth: 1, width:200, padding:10}}/>
+        <Text>{this.state.text}</Text>
+      </View>
+    );
+  }
+}
+
+class Nama extends Component{
+  render(){
+    return(
+      <Text> Hallo {this.props.name} </Text>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  warna: {
+    color: 'red',
+    fontSize: 30
+  }
+});

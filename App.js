@@ -1,20 +1,33 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, Alert, TextInput, TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
   state ={
-    count: 0
+    text: ''
   }
+
+  _onPressButton(){
+    Alert.alert('Kamu klik ini ya');
+  }
+
   render() {
-    const {count} = this.state;
+    const {text} = this.state;
     let pic={
       uri: 'https://source.unsplash.com/daily'
     }
     return (
-      <View style={{flex:1, flexDirection:'column', justifyContent:'center', alignItems:'stretch'}}>
-        <View style={{width:100, height:100, backgroundColor: 'skyblue'}}/>
-        <View style={{height:100, backgroundColor: 'steelblue'}}/>
-        <View style={{flex:2, backgroundColor: 'skyblue'}}/>
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+        <Button color="#fff" onPress={() => {Alert.alert('Hello');}} title="Press Me!"/>
+        </View>
+        <View style={styles.buttonContainer}>
+        <Button color="#fff" onPress={this._onPressButton} title="Press Me!"/>
+        </View>
+        <TouchableOpacity onPress={this._onPressButton}>
+          <View>
+             <Text>Text</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -32,8 +45,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer:{
+    padding: 20,
+    backgroundColor: '#841584'
   },
   warna: {
     color: 'red',
