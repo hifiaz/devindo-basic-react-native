@@ -7,10 +7,7 @@ import {
   Button,
   Alert,
   TextInput,
-  TouchableOpacity,
-  ScrollView,
-  FlatList,
-  SectionList
+  TouchableOpacity
 } from "react-native";
 
 export default class App extends React.Component {
@@ -28,20 +25,28 @@ export default class App extends React.Component {
       uri: "https://source.unsplash.com/daily"
     };
     return (
-      // <FlatList data={[
-      //   {key: 'dev'},
-      //   {key: 'indo'},
-      //   {key: 'luthfi'},
-      //   {key: 'fiaz'},
-      // ]} renderItem={({item}) => <Text style={{fontSize:20, padding: 10}}>{item.key}</Text>} />
-      <View style={{paddingTop: 50}}>
-      <SectionList sections={[
-        {title: 'D', data:['Delon', 'Devindo']},
-        {title: 'F', data:['Fiaz', 'Fanda', 'Fredy']}
-      ]} 
-      keyExtractor={(item, index) => index}
-      renderItem={({item})=> <Text>{item}</Text>}
-      renderSectionHeader={({section}) => <Text>{section.title}</Text>} />
+      <View style={styles.container}>
+        <View style={styles.buttonContainer}>
+          <Button
+            color="#fff"
+            onPress={() => {
+              Alert.alert("Hello");
+            }}
+            title="Press Me!"
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            color="#fff"
+            onPress={this._onPressButton}
+            title="Press Me!"
+          />
+        </View>
+        <TouchableOpacity onPress={this._onPressButton}>
+          <View>
+            <Text>Text</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -57,12 +62,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center"
+    alignItems: "center",
+    justifyContent: "center"
   },
   buttonContainer: {
     padding: 20,
-    margin: 10,
     backgroundColor: "#841584"
   },
   warna: {

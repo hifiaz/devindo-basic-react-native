@@ -8,9 +8,7 @@ import {
   Alert,
   TextInput,
   TouchableOpacity,
-  ScrollView,
-  FlatList,
-  SectionList
+  ScrollView
 } from "react-native";
 
 export default class App extends React.Component {
@@ -28,21 +26,32 @@ export default class App extends React.Component {
       uri: "https://source.unsplash.com/daily"
     };
     return (
-      // <FlatList data={[
-      //   {key: 'dev'},
-      //   {key: 'indo'},
-      //   {key: 'luthfi'},
-      //   {key: 'fiaz'},
-      // ]} renderItem={({item}) => <Text style={{fontSize:20, padding: 10}}>{item.key}</Text>} />
-      <View style={{paddingTop: 50}}>
-      <SectionList sections={[
-        {title: 'D', data:['Delon', 'Devindo']},
-        {title: 'F', data:['Fiaz', 'Fanda', 'Fredy']}
-      ]} 
-      keyExtractor={(item, index) => index}
-      renderItem={({item})=> <Text>{item}</Text>}
-      renderSectionHeader={({section}) => <Text>{section.title}</Text>} />
-      </View>
+      <ScrollView horizontal={true}>
+        <View style={styles.container}>
+          <View style={styles.buttonContainer}>
+            <Button
+              color="#fff"
+              onPress={() => {
+                Alert.alert("Hello");
+              }}
+              title="Press Me!"
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button
+              color="#fff"
+              onPress={this._onPressButton}
+              title="Press Me!"
+            />
+          </View>
+          <TouchableOpacity onPress={this._onPressButton}>
+            <View>
+              <Text>Text</Text>
+            </View>
+          </TouchableOpacity>
+          <Text style={{fontSize:200}}> Lorem ipsum dolor amet</Text>
+        </View>
+      </ScrollView>
     );
   }
 }
