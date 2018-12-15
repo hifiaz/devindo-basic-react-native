@@ -22,27 +22,30 @@ export default class HomeScreen extends React.Component {
     Alert.alert("Kamu klik ini ya");
   }
 
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={}
+    this.state = {};
   }
 
-  componentDidMount(){
-    return fetch('https://jsonplaceholder.typicode.com/posts')
-    .then((response) => response.json())
-    .then((responseJson) => {
-      this.setState({
-        dataSource: responseJson
+  componentDidMount() {
+    return fetch("https://jsonplaceholder.typicode.com/posts")
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState({
+          dataSource: responseJson
+        });
       })
-    }).catch((eror) =>{
-      console.log(eror);
-    })
-
+      .catch(eror => {
+        console.log(eror);
+      });
   }
 
-  static navigationOptions = {
-      title: "Welcome"
-  };
+  static navigationOptions = ({navigation}) => ({
+    title: "Welcome",
+    headerRight:(
+      <Button title="Profile" onPress={() => navigation.navigate("Profile")} />
+    )
+  });
 
   render() {
     const { text } = this.state;
@@ -52,12 +55,15 @@ export default class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View>
-    <Button title="Profile" onPress={() => navigate("Profile")} />
-      <FlatList data={this.state.dataSource} renderItem={({item}) => <Text style={{fontSize:20, padding: 10}}>{item.body}</Text>} 
-      keyExtractor={({id}, index) => id.toString()}
-      />
-      
-      {/* <SectionList sections={[
+        <FlatList
+          data={this.state.dataSource}
+          renderItem={({ item }) => (
+            <Text style={{ fontSize: 20, padding: 10 }}>{item.body}</Text>
+          )}
+          keyExtractor={({ id }, index) => id.toString()}
+        />
+
+        {/* <SectionList sections={[
         {title: 'D', data:['Delon', 'Devindo']},
         {title: 'F', data:['Fiaz', 'Fanda', 'Fredy']}
       ]} 
@@ -78,7 +84,7 @@ class Nama extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
     // alignItems: "center",
     // justifyContent: "center"
   },

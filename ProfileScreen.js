@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  ImageBackground
 } from "react-native";
 
 export default class HomeScreen extends React.Component {
@@ -11,9 +12,11 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
+      <ImageBackground source={{uri: "https://source.unsplash.com/daily"}} style={styles.container}>
       <View>
         <Text>Profile Screen</Text>
       </View>
+      </ImageBackground>
     );
   }
 }
